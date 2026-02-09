@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Process Application - Global Trust Bank</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/process-application.css') }}">
+</head>
+<body>
+    <header class="header">
+        <nav class="nav">
+            <div class="nav-brand">
+                <i class="fas fa-university logo-icon"></i>
+                <div class="brand-text">
+                    <span class="brand-name">Global Trust Bank</span>
+                    <span class="brand-subtitle">AI Driven • Customer Focused</span>
+                </div>
+            </div>
+            
+            <div class="nav-actions">
+                <button class="nav-btn" onclick="window.location.href='/'">
+                    <i class="fas fa-arrow-left"></i> Back to Applications
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <main class="main-content">
+        <!-- Application Header Info -->
+        <section class="application-header">
+            <div class="application-info">
+                <h1 class="application-title">
+                    <i class="fas fa-file-alt"></i>
+                    <span id="applicationIdDisplay">Application ID</span>
+                </h1>
+                <div class="applicant-details">
+                    <span class="applicant-name" id="applicantNameDisplay">Customer Name</span>
+                    <span class="loan-type-badge" id="loanTypeDisplay">Loan Type</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tab Navigation -->
+        <div class="tabs-container">
+            <div class="tabs-nav">
+                <button class="tab-btn active" data-tab="documents" onclick="switchTab('documents')">
+                    <i class="fas fa-folder-open"></i>
+                    <span>Documents</span>
+                </button>
+                <button class="tab-btn" data-tab="workflow" onclick="switchTab('workflow')">
+                    <i class="fas fa-project-diagram"></i>
+                    <span>Workflow</span>
+                </button>
+                <button class="tab-btn hidden" data-tab="analysis" id="analysisTabBtn" onclick="switchTab('analysis')">
+                    <i class="fas fa-chart-bar"></i>
+                    <span>Analysis</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Tab Content -->
+        <div class="tab-content-container">
+            <!-- Documents Tab -->
+            <div class="tab-content active" id="documents-tab">
+                <div class="section-header">
+                    <h2><i class="fas fa-file-invoice"></i> Customer Documents</h2>
+                    <p class="section-subtitle">All submitted documents for verification and review</p>
+                </div>
+                
+                <!-- KYC Documents Category -->
+                <div class="document-category" id="kycDocuments">
+                    <div class="category-header">
+                        <div class="category-title">
+                            <i class="fas fa-id-card"></i>
+                            <span>KYC Documents</span>
+                        </div>
+                        <span class="category-count" id="kycCount">0 documents</span>
+                    </div>
+                    <div class="documents-grid" id="kycDocumentsGrid">
+                        <!-- KYC document cards will be loaded here -->
+                    </div>
+                </div>
+
+                <!-- Financial Documents Category -->
+                <div class="document-category" id="financialDocuments">
+                    <div class="category-header">
+                        <div class="category-title">
+                            <i class="fas fa-rupee-sign"></i>
+                            <span>Financial Documents</span>
+                        </div>
+                        <span class="category-count" id="financialCount">0 documents</span>
+                    </div>
+                    <div class="documents-grid" id="financialDocumentsGrid">
+                        <!-- Financial document cards will be loaded here -->
+                    </div>
+                </div>
+
+                <!-- Property / Collateral Documents Category -->
+                <div class="document-category" id="propertyDocuments">
+                    <div class="category-header">
+                        <div class="category-title">
+                            <i class="fas fa-home"></i>
+                            <span>Property / Collateral Documents</span>
+                        </div>
+                        <span class="category-count" id="propertyCount">0 documents</span>
+                    </div>
+                    <div class="documents-grid" id="propertyDocumentsGrid">
+                        <!-- Property document cards will be loaded here -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Workflow Tab -->
+            <div class="tab-content" id="workflow-tab">
+                
+
+                <div class="workflow-grid" id="workflowGrid">
+                    <!-- Workflow steps will be loaded dynamically -->
+                </div>
+            </div>
+
+            <!-- Analysis Tab -->
+            <div class="tab-content" id="analysis-tab">
+                <div class="section-header">
+                    <h2><i class="fas fa-clipboard-check"></i> Analysis Results</h2>
+                    <p class="section-subtitle">Comprehensive evaluation summary from all agents</p>
+                </div>
+
+                <!-- Final Verdict Section -->
+                <div class="verdict-section" id="verdictSection">
+                    <div class="verdict-card" id="verdictCard">
+                        <div class="verdict-icon" id="verdictIcon">
+                            <i class="fas fa-hourglass-half"></i>
+                        </div>
+                        <div class="verdict-content">
+                            <h3 class="verdict-title" id="verdictTitle">Processing...</h3>
+                            <p class="verdict-message" id="verdictMessage">Awaiting final decision from the underwriting team.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sub-tabs for Agents and Full Output -->
+                <div class="analysis-sub-tabs">
+                    <button class="sub-tab-btn active" data-subtab="agents" onclick="switchAnalysisSubTab('agents')">
+                        <i class="fas fa-robot"></i>
+                        <span>Agent Reports</span>
+                    </button>
+                    <button class="sub-tab-btn" data-subtab="full-output" onclick="switchAnalysisSubTab('full-output')">
+                        <i class="fas fa-list-alt"></i>
+                        <span>Audit Trail</span>
+                    </button>
+                </div>
+
+                <!-- Agents Sub-tab Content -->
+                <div class="analysis-sub-content active" id="agents-subtab">
+                    <div class="analysis-grid" id="analysisGrid">
+                        <!-- Agent analysis cards will be loaded dynamically -->
+                    </div>
+                </div>
+
+                <!-- Full Output Sub-tab Content -->
+                <div class="analysis-sub-content" id="full-output-subtab">
+                    <div class="full-output-container" id="fullOutputContainer">
+                        <!-- Full consolidated output will be loaded dynamically -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Document Viewer Modal -->
+    <div class="modal-overlay" id="documentModal">
+        <div class="modal document-modal">
+            <div class="modal-header">
+                <h3 id="documentModalTitle">Document Preview</h3>
+                <button class="close-btn" onclick="closeDocumentModal()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-content document-viewer" id="documentViewer">
+                <!-- Document preview will be loaded here -->
+            </div>
+            <div class="modal-actions">
+                <button class="btn btn-secondary" onclick="closeDocumentModal()">Close</button>
+                <a class="btn btn-primary" id="downloadDocBtn" href="#" download>
+                    <i class="fas fa-download"></i> Download
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Agent Details Modal -->
+    <div class="modal-overlay" id="agentModal">
+        <div class="modal agent-detail-modal">
+            <div class="modal-header">
+                <div class="agent-modal-title">
+                    <span class="agent-modal-icon" id="agentModalIcon">🎧</span>
+                    <div class="agent-modal-info">
+                        <h3 id="agentModalTitle">Agent Name</h3>
+                        <p id="agentModalSubtitle">Agent summary</p>
+                    </div>
+                </div>
+                <button class="close-btn" onclick="closeAgentModal()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-content agent-detail-content" id="agentModalContent">
+                <!-- Agent details will be loaded here -->
+            </div>
+            <div class="modal-actions">
+                <button class="btn btn-secondary" onclick="closeAgentModal()">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Professional Notification System -->
+    <div id="notificationContainer" class="notification-container">
+        <!-- Notifications will be dynamically added here -->
+    </div>
+
+    <script src="{{ url_for('static', filename='js/process-application.js') }}"></script>
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bank Loan Workflow - Global Trust Bank</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/workflow-new.css') }}">
+</head>
+<body>
+    <div class="workflow-container">
+        <div class="workflow-header">
+            <div class="header-top">
+                <div class="brand-info">
+                    <h1><i class="fas fa-university"></i> Global Trust Bank</h1>
+                    <p>Loan Processing Workflow System</p>
+                </div>
+                <button class="nav-btn" onclick="window.location.href='/'" title="View Applications">
+                    <i class="fas fa-folder-open"></i> Applications
+                </button>
+            </div>
+            
+            <div class="customer-input-section">
+                <div class="input-group">
+                    <label for="customerIdInput">Customer ID:</label>
+                    <input type="text" id="customerIdInput" placeholder="Enter Customer ID (e.g., CUST0001)" maxlength="10">
+                    <button id="startWorkflowBtn" class="btn-start" onclick="workflowInstance.startWorkflowWithCustomerId()">
+                        <i class="fas fa-play-circle"></i> Start Loan Process
+                    </button>
+                </div>
+            </div>
+            
+            <div class="auto-process-controls" id="autoProcessControls" style="display: none;">
+                <button id="autoProcessBtn" class="btn-auto" onclick="workflowInstance.startAutoProcess()">
+                    <i class="fas fa-bolt"></i> Process All
+                </button>
+                <button id="stopProcessBtn" class="btn-stop" onclick="workflowInstance.stopAutoProcess()" disabled>
+                    <i class="fas fa-stop-circle"></i> Stop Process
+                </button>
+            </div>
+        </div>
+        
+        <div class="workflow-grid" id="workflow-grid">
+            <!-- Workflow will be dynamically generated here -->
+        </div>
+    </div>
+
+    <!-- Agent Details Modal -->
+    <div id="agentModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h2 id="modalAgentTitle">Agent Title</h2>
+            <p id="modalAgentDescription">Agent Description</p>
+            <div id="modalAgentDetails">
+                <!-- Details will be populated dynamically -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Professional Notification System -->
+    <div id="notificationContainer" class="notification-container">
+        <!-- Notifications will be dynamically added here -->
+    </div>
+
+    <script src="{{ url_for('static', filename='js/workflow-new.js') }}"></script>
+</body>
+</html>
