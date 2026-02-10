@@ -1,0 +1,45 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.pyo
+.Python
+env/
+venv/
+.venv/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Git
+.git/
+.gitignore
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Env files (secrets)
+.env
+.env.*
+
+# Logs
+*.log
+
+# Docker
+Dockerfile
+docker-compose*.yml
+.dockerignore
+
+# Docs / scripts not needed in image
+README*.md
+deploy.ps1
+web.config
+startup.py
+
+# Node (if any)
+node_modules/
