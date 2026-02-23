@@ -1,10 +1,11 @@
 # 🏦 BFSI Multi-Agent Loan Automation
 
-An end-to-end loan processing automation system for the Banking, Financial Services, and Insurance (BFSI) sector. Built with a **multi-agent AI architecture** powered by **Azure AI Foundry** and **GPT-4o**, it automates the entire loan application lifecycle — from customer intake through document verification, credit assessment, underwriting, offer generation, customer communication, and final audit.
+An end-to-end loan processing automation system for the Banking sector. Built with a **multi-agent AI architecture** powered by **Azure AI Foundry** and **GPT-4o**, it automates the entire loan application lifecycle — from customer intake through document verification, credit assessment, underwriting, offer generation, customer communication, and final audit.
 
 > Tailored for the **Indian banking context** with support for INR currency, PAN/Aadhaar identification, CIBIL credit scoring, and FOIR (Fixed Obligation to Income Ratio) calculations. Simulates a fictional bank called **"Global Trust Bank"**.
 
 ---
+##DEMO : https://loan-workflow-app.agreeablebay-13f80021.eastus2.azurecontainerapps.io/
 
 ## 📑 Table of Contents
 
