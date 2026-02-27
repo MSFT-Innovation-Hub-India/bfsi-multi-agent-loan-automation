@@ -1,0 +1,52 @@
+# Python bytecode
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments
+.venv/
+venv/
+ENV/
+env/
+
+# Build artifacts
+build/
+dist/
+*.egg-info/
+.eggs/
+
+# IDE project files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+logs/
+
+# Environment and secrets
+.env
+.env.*
+
+# Local data and results
+Documents/
+results/
+loan_result.json
+
+
+.dockerignore
+
+# Azure deployment scripts
+DEPLOYMENT.md
+deploy-azure.ps1
+
+# Tests
+.pytest_cache/
+*.pytest_cache/
+pytest-debug.log
